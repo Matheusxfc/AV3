@@ -1,0 +1,3697 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "greencode-api",
+  "collectionId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+  "dateExported": "2026-11-17T10:51:37.375Z",
+  "version": "1.2",
+  "folders": [
+    {
+      "_id": "3bd24f9d-6da1-4a23-a18a-31b40a6dd700",
+      "name": "00 - Infra",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "6b5a5308-2e22-4ecd-a6e4-c3ef77d2ff3c",
+      "name": "01 - Auth",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 20000
+    },
+    {
+      "_id": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "02 - Usuarios (ADMINISTRADOR)",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 30000
+    },
+    {
+      "_id": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "03 - Organizacoes",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 40000
+    },
+    {
+      "_id": "dbccc452-2d63-4ce6-b4f5-37e31e728a13",
+      "name": "04 - Contratos",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 50000
+    },
+    {
+      "_id": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "05 - Lotes",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 60000
+    },
+    {
+      "_id": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "06 - Equipamentos e regras de negocio",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 70000
+    },
+    {
+      "_id": "0ed7bb2e-9d8b-44f1-a222-4209afcaf23e",
+      "name": "07 - Relatorios (AUDITOR)",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 80000
+    },
+    {
+      "_id": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "08 - Journal, Parametros e RBAC",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 90000
+    },
+    {
+      "_id": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "09 - Parceiros e chaves de API (ADMIN)",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 100000
+    },
+    {
+      "_id": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "10 - Analises (interna)",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 110000
+    },
+    {
+      "_id": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "11 - Fila de tarefas (interna)",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 120000
+    },
+    {
+      "_id": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "12 - API PUBLICA (x-api-key)",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 130000
+    },
+    {
+      "_id": "efe5fb2a-27ea-4fb1-b320-aa507544ee40",
+      "name": "13 - Revogacao de chave",
+      "containerId": "",
+      "created": "2026-11-17T10:51:37.375Z",
+      "sortNum": 140000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "d60af30e-47c2-4aa6-811d-8be664c344a4",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3bd24f9d-6da1-4a23-a18a-31b40a6dd700",
+      "name": "Health (guarda {{ts}} para dados unicos)",
+      "url": "{{baseUrl}}/health",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "\"ok\""
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.timestamp",
+          "action": "setto",
+          "value": "{{ts}}"
+        }
+      ]
+    },
+    {
+      "_id": "da9daf3d-3368-42ef-b3c5-d8e6cf2f9d19",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "6b5a5308-2e22-4ecd-a6e4-c3ef77d2ff3c",
+      "name": "Login ADMINISTRADOR (guarda {{token}})",
+      "url": "{{baseUrl}}/api/v1/internal/auth/login",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "token"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.token",
+          "action": "setto",
+          "value": "{{token}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"{{adminUsuario}}\",\n  \"senha\": \"{{adminSenha}}\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "194eea68-febc-44f7-85f9-cef9cf6296ab",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "6b5a5308-2e22-4ecd-a6e4-c3ef77d2ff3c",
+      "name": "Login com senha errada -> 401",
+      "url": "{{baseUrl}}/api/v1/internal/auth/login",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"{{adminUsuario}}\",\n  \"senha\": \"senhaErrada123\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "5ffdc76d-bdaa-426d-ade5-7d0ef0524733",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "6b5a5308-2e22-4ecd-a6e4-c3ef77d2ff3c",
+      "name": "Perfil (GET /auth/me)",
+      "url": "{{baseUrl}}/api/v1/internal/auth/me",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "ADMINISTRADOR"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "fb56ba11-cf87-4ac0-8afe-d83e7876bf81",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "6b5a5308-2e22-4ecd-a6e4-c3ef77d2ff3c",
+      "name": "Renovar token",
+      "url": "{{baseUrl}}/api/v1/internal/auth/renovar",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.token",
+          "action": "setto",
+          "value": "{{token}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "9a318090-b60f-4c38-a512-9f8c6139e2b1",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "6b5a5308-2e22-4ecd-a6e4-c3ef77d2ff3c",
+      "name": "Sem token -> 401",
+      "url": "{{baseUrl}}/api/v1/internal/auth/me",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "404b363b-8f13-4fc1-8a28-b545e390d77e",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "Criar usuario GESTOR_ALMOXARIFADO",
+      "url": "{{baseUrl}}/api/v1/internal/usuarios",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"almox_{{ts}}\",\n  \"senha\": \"Almox@12345\",\n  \"papel\": \"GESTOR_ALMOXARIFADO\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "e4a600bc-484a-4905-ac9d-d831c1349822",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "Criar usuario AUDITOR",
+      "url": "{{baseUrl}}/api/v1/internal/usuarios",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"auditor_{{ts}}\",\n  \"senha\": \"Auditor@123\",\n  \"papel\": \"AUDITOR\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "f62b919b-54cd-425c-8bc7-0962e2331e0f",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "Listar usuarios",
+      "url": "{{baseUrl}}/api/v1/internal/usuarios?limite=50",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "c8af6426-a1b3-4edb-948b-2b27cdb6475a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "Login GESTOR (guarda {{tokenGestor}})",
+      "url": "{{baseUrl}}/api/v1/internal/auth/login",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.token",
+          "action": "setto",
+          "value": "{{tokenGestor}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"almox_{{ts}}\",\n  \"senha\": \"Almox@12345\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "92b581ba-3501-455c-9857-87a5839dae83",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "Login AUDITOR (guarda {{tokenAuditor}})",
+      "url": "{{baseUrl}}/api/v1/internal/auth/login",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.token",
+          "action": "setto",
+          "value": "{{tokenAuditor}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"auditor_{{ts}}\",\n  \"senha\": \"Auditor@123\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "2800610a-f4d1-4929-9ca8-560625f63659",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "98d131bb-701e-4cab-a900-c85f607d2f19",
+      "name": "GESTOR tenta criar usuario -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/usuarios",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"usuario\": \"intruso_{{ts}}\",\n  \"senha\": \"Intruso@123\",\n  \"papel\": \"ADMINISTRADOR\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "d15a0200-12b4-4852-89b3-a8adc60cfbad",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "Criar organizacao (201; re-execucao -> 409)",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"razaoSocial\": \"Hospital Thunder Client\",\n  \"cnpj\": \"11.222.333/0001-81\",\n  \"enderecoCompleto\": \"Rua das Flores, 100 - Sao Jose dos Campos/SP\",\n  \"telefone\": \"(12) 3333-4444\",\n  \"email\": \"ti@hospital.example\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "e63f1a5f-99bd-4d9b-8128-c742f7aeb909",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "Buscar por CNPJ (guarda {{orgId}})",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes?cnpj=11222333000181",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.dados[0].id",
+          "action": "setto",
+          "value": "{{orgId}}"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "9cb80e71-29c3-4f79-a2e1-30e854d30648",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "CNPJ invalido (digito verificador) -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"razaoSocial\": \"Empresa X\",\n  \"cnpj\": \"11222333000182\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "d0d2e34a-8952-461f-8206-670232ffa024",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "GESTOR tenta criar organizacao -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"razaoSocial\": \"Empresa Y\",\n  \"cnpj\": \"11222333000181\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "65b36088-f714-4417-9ab8-664f77b5393c",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "Corpo invalido (falta razaoSocial) -> 400",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"cnpj\": \"11222333000181\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "51026460-0ceb-4217-8eb3-566223037475",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "Detalhar organizacao",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "Hospital Thunder Client"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "601bb2ba-3988-4e78-944f-50081fdf4e16",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "d391dedc-2970-4a67-8914-d5143a07f72f",
+      "name": "Atualizar endereco",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}",
+      "method": "PATCH",
+      "sortNum": 70000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"enderecoCompleto\": \"Av. Nova, 500 - Sao Jose dos Campos/SP\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "cd2c0414-8801-4c33-8e53-0e1ec03cd483",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dbccc452-2d63-4ce6-b4f5-37e31e728a13",
+      "name": "Criar contrato (201; re-execucao -> 409)",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}/contrato",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"dataVencimento\": \"2030-12-31\",\n  \"valorMensal\": 4500,\n  \"clausulas\": [\n    \"Coleta mensal\",\n    \"Certificado de destinacao\"\n  ]\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "3c810bb6-f97c-4287-9210-ff5e0ac6ef84",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dbccc452-2d63-4ce6-b4f5-37e31e728a13",
+      "name": "Obter contrato",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}/contrato",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "\"vigente\":true"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "90259c32-a96e-4663-bd7d-af35183a2d04",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dbccc452-2d63-4ce6-b4f5-37e31e728a13",
+      "name": "Renovar contrato (vencimento posterior ao atual)",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}/contrato/renovar",
+      "method": "PATCH",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"dataVencimento\": \"2035-12-31\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "77530f59-09f7-4694-9305-89002d07240f",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dbccc452-2d63-4ce6-b4f5-37e31e728a13",
+      "name": "Renovar para data anterior -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}/contrato/renovar",
+      "method": "PATCH",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"dataVencimento\": \"2031-01-01\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "c141018d-226b-4159-8f41-df2677eb69e1",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Lote com data FUTURA -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/lotes",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"organizacaoId\": \"{{orgId}}\",\n  \"notaFiscal\": \"NF-FUTURA\",\n  \"transportadora\": \"T1\",\n  \"dataEntrada\": \"2099-01-01\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "3120c2fd-b842-4eaf-9a4c-50908fc93c23",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Lote com data > 90 dias -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/lotes",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"organizacaoId\": \"{{orgId}}\",\n  \"notaFiscal\": \"NF-ANTIGA\",\n  \"transportadora\": \"T1\",\n  \"dataEntrada\": \"2020-01-01\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "08b49f21-1021-4eda-936a-9aeee714a249",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Criar lote (guarda {{loteId}})",
+      "url": "{{baseUrl}}/api/v1/internal/lotes",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "RECEBIDO"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{loteId}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"organizacaoId\": \"{{orgId}}\",\n  \"notaFiscal\": \"NF-{{ts}}\",\n  \"transportadora\": \"TransRapida\",\n  \"observacoes\": \"Criado pelo Thunder Client\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "31d11064-cda6-4917-852f-b739a223a3d6",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Adicionar NOTEBOOK (guarda {{equipId}} e {{codigoEquip}})",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}/equipamentos",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "NTB-"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{equipId}}"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.codigoBarrasInterno",
+          "action": "setto",
+          "value": "{{codigoEquip}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"NOTEBOOK\",\n  \"marca\": \"Dell\",\n  \"modelo\": \"Latitude 5400\",\n  \"anoFabricacao\": 2019,\n  \"estadoFisico\": \"BOM_ESTADO\",\n  \"pesoQuilogramas\": 2.1\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "daa63105-4ace-4a58-922e-1958de832c0a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Adicionar MONITOR (guarda {{equipId2}})",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}/equipamentos",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "MON-"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{equipId2}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"MONITOR\",\n  \"marca\": \"LG\",\n  \"modelo\": \"24MK430H\",\n  \"anoFabricacao\": 2018,\n  \"estadoFisico\": \"USADO_LEVE\",\n  \"pesoQuilogramas\": 3.4\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "7a43366f-2764-4e03-a162-97a11e5369c6",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Detalhar lote (com equipamentos)",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "equipamentos"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "48aa252f-5331-4a9b-8bc9-014f22077c4b",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Listar lotes da organizacao",
+      "url": "{{baseUrl}}/api/v1/internal/lotes?organizacaoId={{orgId}}",
+      "method": "GET",
+      "sortNum": 70000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "c32e10db-4737-4f45-9af2-ea1717455c09",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Status do equipamento ANTES da triagem do lote -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/status",
+      "method": "PATCH",
+      "sortNum": 80000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoStatus\": \"EM_TRIAGEM\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "6b42cec2-ca19-427d-a38a-e61076b8706a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "1a9a7c89-3b37-4596-af06-0e66c5617e52",
+      "name": "Iniciar triagem do lote",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}/triagem",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "EM_TRIAGEM"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "f68f67b9-7c02-40e7-96eb-9eb8af33d944",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Queda de 4 categorias SEM justificativa -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/estado",
+      "method": "PATCH",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoEstado\": \"DANIFICADO_GRAVE\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "20e1dc19-6bf1-4cf9-a997-f5a14488d6e3",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Versao desatualizada (999) -> 409",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/estado",
+      "method": "PATCH",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "409"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoEstado\": \"DANIFICADO_GRAVE\",\n  \"justificativa\": \"teste\",\n  \"versao\": 999\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "83df3e71-8c8b-4cc2-b463-5bfbe25fbeca",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Queda COM justificativa -> 200",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/estado",
+      "method": "PATCH",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "DANIFICADO_GRAVE"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoEstado\": \"DANIFICADO_GRAVE\",\n  \"justificativa\": \"Queda durante o transporte\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "324f207d-8b77-4101-89e8-8307a12f1a9a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Pular para EM_DESMONTE sem triagem completa -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/status",
+      "method": "PATCH",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "triagem completa"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoStatus\": \"EM_DESMONTE\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "c9f057b8-767b-434e-8b38-62e127f32709",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Status -> AGUARDANDO_DESMONTE",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/status",
+      "method": "PATCH",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "AGUARDANDO_DESMONTE"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoStatus\": \"AGUARDANDO_DESMONTE\",\n  \"justificativa\": \"Triagem concluida\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "88c5c2e3-51f8-4126-8a38-04f14f30a4fc",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Status -> EM_DESMONTE",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/status",
+      "method": "PATCH",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "EM_DESMONTE"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoStatus\": \"EM_DESMONTE\",\n  \"justificativa\": \"Desmonte autorizado\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "e297ee4d-f8a9-45b6-9803-3ec4f8510925",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Registrar movimentacao fisica",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/movimentacoes",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"destino\": \"Bancada de desmonte 3\",\n  \"observacao\": \"Desmonte de placas\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "d476e251-358b-4c7c-a941-0f599b11975c",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Rastreabilidade completa",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/rastreio",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "historicoMovimentacao"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "Bancada de desmonte 3"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "00351c07-0f8d-44dc-8c82-775568810868",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Depreciacao (valor original 5000)",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/depreciacao?valorOriginal=5000",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "valorResidual"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "e12f13fd-a84b-415a-8d09-e03253e21da9",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Triagem do 2o equipamento -> lote conclui sozinho",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId2}}/status",
+      "method": "PATCH",
+      "sortNum": 100000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoStatus\": \"AGUARDANDO_DESMONTE\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "49deacac-8282-4ea5-8786-fce4fe8e5c47",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Lote agora esta TRIAGEM_CONCLUIDA",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}",
+      "method": "GET",
+      "sortNum": 110000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "TRIAGEM_CONCLUIDA"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "aec1bc29-df46-4f6a-9c11-aabb712cb6e6",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Avancar lote -> ENCAMINHADO",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}/status",
+      "method": "PATCH",
+      "sortNum": 120000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "ENCAMINHADO"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"ENCAMINHADO\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "10439180-06f2-49ec-bf75-57ab93ee1c9d",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "91bab389-2c0a-42cc-b988-71f6465d6d9b",
+      "name": "Finalizar lote com equipamentos pendentes -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/lotes/{{loteId}}/status",
+      "method": "PATCH",
+      "sortNum": 130000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"FINALIZADO\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "19147c7e-dce9-4505-818b-26b730c0d78e",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "0ed7bb2e-9d8b-44f1-a222-4209afcaf23e",
+      "name": "Relatorio por organizacao",
+      "url": "{{baseUrl}}/api/v1/internal/relatorios/organizacao/{{orgId}}?inicio=2020-01-01&fim=2099-12-31",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "pesoTotalQuilogramas"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "c60fe3e4-d19b-4f57-b602-5c5a87bb7e8e",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "0ed7bb2e-9d8b-44f1-a222-4209afcaf23e",
+      "name": "Resumo por status",
+      "url": "{{baseUrl}}/api/v1/internal/relatorios/status",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "6e547b05-2f4a-4605-baa1-af8cbe1ed9f2",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "0ed7bb2e-9d8b-44f1-a222-4209afcaf23e",
+      "name": "Equipamentos EM_DESMONTE",
+      "url": "{{baseUrl}}/api/v1/internal/relatorios/status/EM_DESMONTE",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "8f00a25c-a87c-47c7-a860-236f1371c2b7",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "0ed7bb2e-9d8b-44f1-a222-4209afcaf23e",
+      "name": "Relatorio financeiro",
+      "url": "{{baseUrl}}/api/v1/internal/relatorios/financeiro?inicio=2020-01-01&fim=2099-12-31",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "receitaContratualMensalEstimada"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "17050031-4af1-43f6-87bf-020c66abd222",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "0ed7bb2e-9d8b-44f1-a222-4209afcaf23e",
+      "name": "GESTOR tenta relatorio -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/relatorios/financeiro?inicio=2020-01-01&fim=2099-12-31",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "297fbe8e-1173-4cd1-8918-d68f0f92f777",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "Journal do equipamento (AUDITOR)",
+      "url": "{{baseUrl}}/api/v1/internal/journal?entidade=Equipamento&limite=10",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "19dc8068-a75f-42c6-bbcd-7109ccc03288",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "AUDITOR tenta alterar equipamento -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/equipamentos/{{equipId}}/estado",
+      "method": "PATCH",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"novoEstado\": \"INSERVIVEL\",\n  \"justificativa\": \"x\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "b536bd3d-4c4b-4181-a114-67ab81339493",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "Parametros globais",
+      "url": "{{baseUrl}}/api/v1/internal/parametros",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "coeficienteDepreciacaoAnual"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "5422508a-1aa6-48ed-a5a4-21ee0b5819da",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "Atualizar coeficiente de depreciacao",
+      "url": "{{baseUrl}}/api/v1/internal/parametros",
+      "method": "PUT",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"coeficienteDepreciacaoAnual\": 0.25\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "d91c0c87-600e-4410-9603-71ccf80f3678",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "AUDITOR tenta atualizar parametros -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/parametros",
+      "method": "PUT",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"coeficienteDepreciacaoAnual\": 0.9\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "117a3250-54dd-4bac-af03-4d442b9ab6bd",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "15f5695c-d72b-485c-aba3-559e2b342717",
+      "name": "Desativar organizacao com lote aberto -> 409",
+      "url": "{{baseUrl}}/api/v1/internal/organizacoes/{{orgId}}",
+      "method": "PATCH",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "409"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"ativo\": false\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "d070eb93-d1f8-4707-b4c7-d73b20fd8d6d",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "Criar parceiro vinculado a organizacao (guarda {{parceiroId}})",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{parceiroId}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Parceiro Thunder {{ts}}\",\n  \"email\": \"integracao@parceiro.example\",\n  \"organizacaoId\": \"{{orgId}}\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "ada88f75-c21d-4fc2-a15b-69207702c4f5",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "Gerar chave COMPLETA (guarda {{apiKey}})",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros/{{parceiroId}}/chaves",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "gck_"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "NAO sera exibida"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.chave",
+          "action": "setto",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Integracao ERP\",\n  \"escopos\": [\n    \"RASTREABILIDADE_LER\",\n    \"LOTES_LER\",\n    \"LOTES_ESCREVER\",\n    \"ANALISES_LER\"\n  ],\n  \"limitePorMinuto\": 120\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "2fbca855-8ab4-4cdd-9ce8-898a9f12425f",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "Gerar chave SO LEITURA de rastreabilidade (guarda {{apiKeyLeitura}})",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros/{{parceiroId}}/chaves",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.chave",
+          "action": "setto",
+          "value": "{{apiKeyLeitura}}"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{chaveLeituraId}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Somente leitura\",\n  \"escopos\": [\n    \"RASTREABILIDADE_LER\"\n  ],\n  \"limitePorMinuto\": 60\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "23555cef-9e0e-4589-82da-7a773d372784",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "Gerar chave com LIMITE 3/min (guarda {{apiKeyLimitada}})",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros/{{parceiroId}}/chaves",
+      "method": "POST",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.chave",
+          "action": "setto",
+          "value": "{{apiKeyLimitada}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Limite baixo (demo 429)\",\n  \"escopos\": [\n    \"RASTREABILIDADE_LER\"\n  ],\n  \"limitePorMinuto\": 3\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "5d60cb86-3094-4dd8-9b75-87089316d41b",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "Listar chaves (nunca mostra o segredo)",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros/{{parceiroId}}/chaves",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "prefixo"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "52d77942-18c8-47cd-b188-7354c622922a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "Chave sem escopos -> 400",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros/{{parceiroId}}/chaves",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Sem escopo\",\n  \"escopos\": []\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "4fe25218-defb-4237-8500-b202ec6392b7",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "dd3f8700-e50d-48a2-8457-f64161138c43",
+      "name": "GESTOR tenta criar parceiro -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Intruso\",\n  \"email\": \"x@x.example\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenGestor}}"
+      }
+    },
+    {
+      "_id": "10fef501-ac5a-4bc1-80b8-34e7a2b6b481",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Executar EFICIENCIA (sincrono; persiste)",
+      "url": "{{baseUrl}}/api/v1/internal/analises/eficiencia/executar",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "tempoEntradaAteTriagemConcluida"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "porOperador"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "70b4c462-7828-45ad-8e71-1f237de7c039",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Executar RENTABILIDADE",
+      "url": "{{baseUrl}}/api/v1/internal/analises/rentabilidade/executar",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "porTipo"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "priorizacao"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "d5ce1edd-d21a-4c1e-8abd-9ba5bdc2da41",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Executar VIDA UTIL (regressao OLS por tipo)",
+      "url": "{{baseUrl}}/api/v1/internal/analises/vida-util/executar",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "modelos"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "idadeInservivelEstimada"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "f9356faa-a75f-498f-853b-d294cfb37b2a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Ultimo resultado de eficiencia",
+      "url": "{{baseUrl}}/api/v1/internal/analises/eficiencia/ultimo",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "versaoModelo"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "fc09f813-57f5-413e-9e9b-55c12358a103",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Historico de execucoes (vida-util)",
+      "url": "{{baseUrl}}/api/v1/internal/analises/vida-util/historico",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "03e2bd74-8dbc-41c8-ba67-74b592709298",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Serie historica dos modelos (por tipo)",
+      "url": "{{baseUrl}}/api/v1/internal/analises/vida-util/modelos?tipoEquipamento=NOTEBOOK",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "97004cc6-ea9e-4b5e-9548-69caac0fa349",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Valores de referencia (R$/kg)",
+      "url": "{{baseUrl}}/api/v1/internal/analises/valores-referencia",
+      "method": "GET",
+      "sortNum": 70000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "valorPorKg"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "ec229f0d-bac9-4128-8795-c30b573a9f1f",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Atualizar valor de referencia (admin)",
+      "url": "{{baseUrl}}/api/v1/internal/analises/valores-referencia",
+      "method": "PUT",
+      "sortNum": 80000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"NOTEBOOK\",\n  \"marca\": \"Dell\",\n  \"modelo\": \"Latitude 5400\",\n  \"valorPorKg\": 44\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "15c4da5f-a8f0-4396-b4c1-76e4b6c041da",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "AUDITOR tenta executar analise -> 403",
+      "url": "{{baseUrl}}/api/v1/internal/analises/eficiencia/executar",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "03f1c2b6-a656-491b-8e8d-c2ce8490e0c4",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Tipo de analise invalido -> 400",
+      "url": "{{baseUrl}}/api/v1/internal/analises/inexistente/executar",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "a2e3708b-69ab-4a9b-aaed-bf269481cede",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "c5d3f112-56b1-45c3-965b-0f730d35ead6",
+      "name": "Executar ASSINCRONO (guarda {{tarefaId}})",
+      "url": "{{baseUrl}}/api/v1/internal/analises/rentabilidade/executar",
+      "method": "POST",
+      "sortNum": 110000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "202"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "tarefaId"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.tarefaId",
+          "action": "setto",
+          "value": "{{tarefaId}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"assincrono\": true\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "bda0e296-74b5-48c8-b328-272fc8260d90",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "Resumo da fila por status",
+      "url": "{{baseUrl}}/api/v1/internal/tarefas/resumo",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "PENDENTE"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "1073b04f-403d-4960-989d-b711288b6f0c",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "Status da tarefa assincrona",
+      "url": "{{baseUrl}}/api/v1/internal/tarefas/{{tarefaId}}",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "tentativas"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "fc8dabdd-2a58-4e0d-933b-30cd01d0fd32",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "Solicitar relatorio interno CSV (guarda {{tarefaRelId}})",
+      "url": "{{baseUrl}}/api/v1/internal/tarefas/relatorios",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "202"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.tarefaId",
+          "action": "setto",
+          "value": "{{tarefaRelId}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"RENTABILIDADE\",\n  \"formato\": \"CSV\"\n}",
+        "form": []
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "366df7ce-673f-4b60-aa42-afe6fe6d0e00",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "Listar tarefas (admin)",
+      "url": "{{baseUrl}}/api/v1/internal/tarefas?limite=10",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "08fdccee-74b9-4163-ba94-eb640faa84be",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "Baixar relatorio interno (200; se 409, aguarde 2-5 s e repita)",
+      "url": "{{baseUrl}}/api/v1/internal/tarefas/{{tarefaRelId}}/download",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{tokenAuditor}}"
+      }
+    },
+    {
+      "_id": "f88e9a76-1a39-470a-8465-79568714cc44",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "b52eb7a5-2e0c-4629-823b-8fcd33560e08",
+      "name": "Reenfileirar tarefa que nao esta em FALHA -> 422",
+      "url": "{{baseUrl}}/api/v1/internal/tarefas/{{tarefaId}}/reenfileirar",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "0051d1bd-f003-4ebe-a68d-1a8e7216910a",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Sem chave -> 401",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "98701727-a362-4471-90cc-b00bca34ea39",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Chave invalida -> 401",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "gck_0000000000_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "_id": "05bef14e-61cf-48de-9c40-ac39bc93e670",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Quem sou eu (chave completa)",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "escopos"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "LOTES_ESCREVER"
+        }
+      ]
+    },
+    {
+      "_id": "770cec7c-77ef-41ea-abdb-47bf38f44f94",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Rastreabilidade por codigo de barras",
+      "url": "{{baseUrl}}/api/v1/public/rastreabilidade/{{codigoEquip}}",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "historico"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "status"
+        }
+      ]
+    },
+    {
+      "_id": "a8308f61-cb95-41b5-9eb2-41b4faa184b8",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Rastreabilidade de codigo inexistente -> 404",
+      "url": "{{baseUrl}}/api/v1/public/rastreabilidade/NTB-1999-000001",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "404"
+        }
+      ]
+    },
+    {
+      "_id": "60abd60b-9fa7-455c-8523-5ed7efee1b42",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Listar equipamentos do parceiro",
+      "url": "{{baseUrl}}/api/v1/public/equipamentos?limite=10",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "dados"
+        }
+      ]
+    },
+    {
+      "_id": "5e1b661b-d37a-4c10-b428-be0447ac552e",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Chave SO LEITURA tenta ver lotes (sem escopo) -> 403",
+      "url": "{{baseUrl}}/api/v1/public/lotes",
+      "method": "GET",
+      "sortNum": 70000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ]
+    },
+    {
+      "_id": "3aff6dbd-9ddc-4929-98ab-7c97be0b7f99",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Listar lotes",
+      "url": "{{baseUrl}}/api/v1/public/lotes",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "dados"
+        }
+      ]
+    },
+    {
+      "_id": "dde3e4e7-bfcd-4e20-a5b6-d8bebcea2abb",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Detalhar lote",
+      "url": "{{baseUrl}}/api/v1/public/lotes/{{loteId}}",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "equipamentos"
+        }
+      ]
+    },
+    {
+      "_id": "50074947-8eda-431a-8286-c28044ee7f2d",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Submeter lote com equipamentos (guarda {{loteIdPub}})",
+      "url": "{{baseUrl}}/api/v1/public/lotes",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{loteIdPub}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"notaFiscal\": \"NF-PUB-{{ts}}\",\n  \"transportadora\": \"TransRapida\",\n  \"equipamentos\": [\n    {\n      \"tipo\": \"NOTEBOOK\",\n      \"marca\": \"Dell\",\n      \"modelo\": \"Latitude 5400\",\n      \"anoFabricacao\": 2020,\n      \"estadoFisico\": \"BOM_ESTADO\",\n      \"pesoQuilogramas\": 2\n    }\n  ]\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "ee7a2faa-3967-4a8c-b1cf-d54894ccf442",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Reenviar a mesma nota fiscal -> 409 (idempotente)",
+      "url": "{{baseUrl}}/api/v1/public/lotes",
+      "method": "POST",
+      "sortNum": 110000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "409"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"notaFiscal\": \"NF-PUB-{{ts}}\",\n  \"transportadora\": \"TransRapida\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "66d58035-f7ea-4005-a8f3-0d056531a49f",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Lote com data futura -> 422",
+      "url": "{{baseUrl}}/api/v1/public/lotes",
+      "method": "POST",
+      "sortNum": 120000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "422"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"notaFiscal\": \"NF-PUB-FUT\",\n  \"transportadora\": \"T\",\n  \"dataEntrada\": \"2099-01-01\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "2cfddb42-4fbb-4765-88ab-805e41a8238e",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Chave sem escopo de escrita tenta POST /lotes -> 403",
+      "url": "{{baseUrl}}/api/v1/public/lotes",
+      "method": "POST",
+      "sortNum": 130000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"notaFiscal\": \"X\",\n  \"transportadora\": \"Y\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "87a6b7a6-bfe6-4dd4-b1fc-2934f585095e",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Solicitar relatorio preditivo CSV -> 202 (guarda {{relId}})",
+      "url": "{{baseUrl}}/api/v1/public/relatorios",
+      "method": "POST",
+      "sortNum": 140000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "202"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "statusUrl"
+        },
+        {
+          "type": "set-env-var",
+          "custom": "json.id",
+          "action": "setto",
+          "value": "{{relId}}"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"EQUIPAMENTOS_PREDITIVO\",\n  \"formato\": \"CSV\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "b98252db-c2ec-459b-90c1-da620d09ae68",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Status do relatorio (polling)",
+      "url": "{{baseUrl}}/api/v1/public/relatorios/{{relId}}",
+      "method": "GET",
+      "sortNum": 150000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "status"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "tentativas"
+        }
+      ]
+    },
+    {
+      "_id": "d908663f-6d9c-4a62-a9ff-244d929357f7",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Baixar relatorio (200; se 409, aguarde 2-5 s e repita)",
+      "url": "{{baseUrl}}/api/v1/public/relatorios/{{relId}}/download",
+      "method": "GET",
+      "sortNum": 160000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "2cb9b7f5-70c7-437c-ad0f-2afb2e6e55c1",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Solicitar relatorio de VIDA_UTIL em JSON -> 202",
+      "url": "{{baseUrl}}/api/v1/public/relatorios",
+      "method": "POST",
+      "sortNum": 170000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "202"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"VIDA_UTIL\",\n  \"formato\": \"JSON\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "b4538510-8f24-45b0-bb2d-9522c5b29b16",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Tipo de relatorio invalido -> 400",
+      "url": "{{baseUrl}}/api/v1/public/relatorios",
+      "method": "POST",
+      "sortNum": 180000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKey}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"QUALQUER\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "16aa6e8b-bcdd-4149-95b8-35e8a7c98875",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "Relatorio sem escopo ANALISES_LER -> 403",
+      "url": "{{baseUrl}}/api/v1/public/relatorios",
+      "method": "POST",
+      "sortNum": 190000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "403"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"tipo\": \"RENTABILIDADE\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "60e33903-fc5a-4ce0-b902-27c997efa771",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "RATE LIMIT 1/4 (chave limitada: 3 por minuto)",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 200000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLimitada}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "4e3cc93c-3955-46ee-bce6-e0e3f85a4f2d",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "RATE LIMIT 2/4",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 210000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLimitada}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "355acd5d-3e6c-4e92-80a1-697d3e704ade",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "RATE LIMIT 3/4",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 220000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLimitada}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "4c61dd41-6925-4e7c-b3a9-240da221e72c",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "3ef23446-7ab1-4449-9e3e-953715a72f31",
+      "name": "RATE LIMIT 4/4 -> 429",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 230000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLimitada}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "429"
+        },
+        {
+          "type": "res-body",
+          "custom": "",
+          "action": "contains",
+          "value": "LIMITE_EXCEDIDO"
+        }
+      ]
+    },
+    {
+      "_id": "d845edc3-68ce-4c39-ad86-2729429c290c",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "efe5fb2a-27ea-4fb1-b320-aa507544ee40",
+      "name": "ADMIN revoga a chave de leitura -> 204",
+      "url": "{{baseUrl}}/api/v1/internal/parceiros/{{parceiroId}}/chaves/{{chaveLeituraId}}",
+      "method": "DELETE",
+      "sortNum": 10000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "204"
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{token}}"
+      }
+    },
+    {
+      "_id": "2dfdcc0b-673e-43ce-a85e-496c3c22e017",
+      "colId": "8a0a57dc-57df-4e43-b662-4fb85634c008",
+      "containerId": "efe5fb2a-27ea-4fb1-b320-aa507544ee40",
+      "name": "Chave revogada deixa de funcionar -> 401",
+      "url": "{{baseUrl}}/api/v1/public/me",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-17T10:51:37.375Z",
+      "modified": "2026-11-17T10:51:37.375Z",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "value": "{{apiKeyLeitura}}"
+        }
+      ],
+      "params": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "401"
+        }
+      ]
+    }
+  ]
+}
